@@ -79,9 +79,6 @@ export default class Chart extends Component<void, any, any> {
 	}
 
 	_computeBounds() : any {
-		if(this.props.yMin !== -1 && this.props.yMax !== -1) {
-			return this.setState({ bounds: { max:this.props.yMax, min:this.props.yMin } });
-		}
 		let min = Infinity;
 		let max = -Infinity;
 		const data = this.props.data || [[]];
@@ -110,6 +107,10 @@ export default class Chart extends Component<void, any, any> {
 		// Exit if we want tight bounds
 		if (this.props.tightBounds) {
 			return this.setState({ bounds: { min, max } });
+		}
+		
+		if(this.props.yMin !== -1 && this.props.yMax !== -1) {
+			return this.setState({ bounds: { max:this.props.yMax, min:this.props.yMin } });
 		}
 
 		max = getRoundNumber(max, this.props.verticalGridStep);
