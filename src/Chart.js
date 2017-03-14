@@ -56,6 +56,8 @@ export default class Chart extends Component<void, any, any> {
 		yAxisWidth: 30,
 		yAxisUseDecimal: false,
 		yAxisShortLabel: false,
+		yMin:null,
+		yMax:null
 	};
 
 	constructor(props : any) {
@@ -77,6 +79,9 @@ export default class Chart extends Component<void, any, any> {
 	}
 
 	_computeBounds() : any {
+		if(this.props.yMin && this.props.yMax) {
+			return this.setState({ bounds: { max:this.props.yMax, min:this.props.yMax } });
+		}
 		let min = Infinity;
 		let max = -Infinity;
 		const data = this.props.data || [[]];
