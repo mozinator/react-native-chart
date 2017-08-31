@@ -1,6 +1,7 @@
 /* @flow */
 'use strict';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { LayoutAnimation, StyleSheet, View } from 'react-native';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
@@ -108,7 +109,7 @@ export default class Chart extends Component<void, any, any> {
 		if (this.props.tightBounds) {
 			return this.setState({ bounds: { min, max } });
 		}
-		
+
 		if(this.props.yMin !== -1 && this.props.yMax !== -1) {
 			return this.setState({ bounds: { max:this.props.yMax, min:this.props.yMin } });
 		}
